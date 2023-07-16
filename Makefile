@@ -36,3 +36,6 @@ app_bash:
 
 php:
 	app_bash
+
+test:
+	./bin/phpunit

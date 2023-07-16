@@ -1,6 +1,7 @@
 .*
 !.gitignore
 !.env.disk
+!.env.test.disk
 ###> symfony/framework-bundle ###
 /.env.local
 /.env.local.php
