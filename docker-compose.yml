@@ -4,21 +4,24 @@ services:
   php-fpm:
     container_name: php-fpm
     build:
-      context: ./../
+      context: ""
       dockerfile: ./docker/php-fpm/Dockerfile
       args:
         - PUID=${PUID}
         - PGID=${PGID}
+        - APP_ENV=${APP_ENV}
+    environment:
+      PHP_IDE_CONFIG: "serverName=app-bubbel"
     volumes:
-      - ./../:/var/www/
+      - .:/var/www/
 
   nginx:
     container_name: nginx
     build:
-      context: ./nginx
+      context: ./docker/nginx
     ports:
       - ${NGINX_HOST_HTTP_PORT}:80
     volumes:
-      - ..:/var/www:rw
+      - .:/var/www:rw
     depends_on:
       - php-fpm
